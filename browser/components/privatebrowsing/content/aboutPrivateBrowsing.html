@@ -1,77 +1,164 @@
-<!--
-# This Source Code Form is subject to the terms of the Mozilla Public
-# License, v. 2.0. If a copy of the MPL was not distributed with this
-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
--->
+
 <!DOCTYPE html>
+<html lang="en" >
 
-<html xmlns="http://www.w3.org/1999/xhtml" class="private">
-  <head>
-    <meta http-equiv="Content-Security-Policy" content="default-src chrome: blob:; object-src 'none'"/>
+<head>
+
+  <meta charset="UTF-8">
+  
     <link rel="icon" href="chrome://browser/skin/privatebrowsing/favicon.svg"/>
-    <link rel="stylesheet" href="chrome://browser/content/aboutPrivateBrowsing.css" media="all"/>
-    <link rel="stylesheet" href="chrome://browser/skin/privatebrowsing/aboutPrivateBrowsing.css" media="all"/>
-    <link rel="localization" href="branding/brand.ftl"/>
-    <link rel="localization" href="browser/branding/brandings.ftl"/>
-    <link rel="localization" href="browser/aboutPrivateBrowsing.ftl"/>
-    <script src="chrome://browser/content/aboutPrivateBrowsing.js"></script>
-    <script src="chrome://browser/content/contentSearchHandoffUI.js"></script>
-  </head>
+    <title>You're Browsing Privately</title>
+  
+  
+  
+<style>
 
-  <body>
-    <p class="showNormal" data-l10n-id="about-private-browsing-not-private"></p>
-    <button id="startPrivateBrowsing"
-            class="showNormal" data-l10n-id="privatebrowsingpage-open-private-window-label"></button>
-    <div id="search-banner" class="search-banner"
-         hidden="true">
-      <button id="search-banner-close-button"
-              class="search-banner-close-button"
-              data-l10n-id="about-private-browsing-search-banner-close-button">
-        <img class="search-banner-close-image" src="chrome://global/skin/icons/close.svg"/>
-      </button>
-      <div class="banner-body">
-        <h1 id="about-private-browsing-search-banner-title"
-            data-l10n-id="about-private-browsing-search-banner-title"
-            data-l10n-args='{"engineName": ""}'></h1>
-        <p id="about-private-browsing-search-banner-description"
-           data-l10n-id="about-private-browsing-search-banner-description">
-          <a href="" id="open-search-options-link" data-l10n-name="link-options"></a>
-        </p>
-      </div>
-    </div>
-    <div class="showPrivate showSearch container">
-      <div class="logo-and-wordmark">
-        <div class="logo"></div>
-        <div class="wordmark"></div>
-      </div>
-      <div class="search-inner-wrapper">
-        <button id="search-handoff-button" class="search-handoff-button" tabindex="-1">
-          <div class="fake-textbox"></div>
-          <input id="fake-editable" class="fake-editable" tabindex="-1" aria-hidden="true" />
-          <div class="fake-caret"></div>
-        </button>
-      </div>
-      <div class="info">
-        <h1 id="info-title" data-l10n-id="about-private-browsing-info-title"></h1>
-        <p id="info-body" data-l10n-id="about-private-browsing-info-description"></p>
-        <a id="private-browsing-myths" data-l10n-id="about-private-browsing-info-myths"></a>
-      </div>
-    </div>
 
-    <div class="promo">
-      <div class="promo-image-large">
-        <img src="" alt="" />
-      </div>
-      <div class="promo-content">
-        <h1 id="promo-header"></h1>
-        <p id="private-browsing-vpn-text" class="vpn-promo" data-l10n-id="about-private-browsing-need-more-privacy"></p>
-        <div class="promo-cta">
-          <a id="private-browsing-vpn-link" class="vpn-promo" data-l10n-id="about-private-browsing-turn-on-vpn"></a>
-          <div class="promo-image-small">
-            <img src="" alt="" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
+body {
+  color: white;
+   background-color: #000000;
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: 1.7em;
+  font-weight: normal;
+  line-height: 1.2em;
+  margin-top: 0;
+}
+
+a {
+  color: rgb(39, 110, 242);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.content {
+  background-color: #303;
+  border-radius: 2px;
+  box-shadow: 0 4px 6px 1px rgba(50, 50, 50, 0.14);
+  box-sizing: border-box;
+  color: black;
+  line-height: 1.5;
+  margin: 5.5em auto 0;
+  max-width: 640px;
+  padding: 30px 35px 30px 37px;
+  width: 100%;
+}
+
+.content > span {
+  display: block;
+}
+
+.content p:last-child {
+  margin-bottom: 4px;
+}
+
+@media (max-width:700px) {
+  body {
+    margin: 1em 2em 2em;
+  }
+}
+
+@media (max-width:400px) {
+  body {
+    margin: 3em 1.5em 2em;
+  }
+}
+
+@media (max-height:480px) and (max-width:400px) {
+  .content {
+    margin: auto;
+  }
+}
+
+
+.content > span {
+  color: white;
+  background-color: #303;
+  max-width: 416px;
+}
+
+.icon {
+  -webkit-margin-after: 10px;
+  -webkit-margin-before: 4px;
+  -webkit-margin-start: 25px;
+  content: -webkit-image-set(
+      url('chrome://browser/skin/privatebrowsing/favicon.svg') 1x);
+  float: right;
+  height: 128px;
+  width: 128px;
+}
+
+
+@media (max-width:400px) {
+  .icon {
+    -webkit-margin-start: 15px;
+    height: 96px;
+    width: 96px;
+  }
+}
+
+
+
+
+body {
+  color: rgba(0,0,0,1);
+  height: 100%;
+  overflow: auto;
+}
+
+#attribution,
+[is='action-link'] {
+  color: rgba(102,102,102,1);
+}
+
+[is='action-link']:active {
+  color: rgba(0,0,0,1);
+}
+
+.page-switcher {
+  color: rgba(0,0,0, 0.5);
+}
+
+.page-switcher:hover,
+.page-switcher:focus,
+.page-switcher.drag-target {
+  background-color: rgba(0,0,0, 0.06);
+}
+
+
+</style>
+
+
+
+
+</head>
+
+<body translate="no" >
+  <html i18n-values="dir:textdirection;bookmarkbarattached:bookmarkbarattached" dir="ltr" bookmarkbarattached="false"><head>
+<meta charset="utf-8">
+<title i18n-content="title">New Tab</title>
+</head>
+<body>
+<div class="content" i18n-values=".style.fontFamily:fontfamily;.style.fontSize:fontsize" style="font-family: 'Segoe UI', Tahoma, sans-serif; font-size: 75%;">
+  <div class="icon"></div>
+  <span>
+    <h1 i18n-content="incognitoTabHeading">You’ve gone incognito</h1>
+    <p>
+      <span i18n-values=".innerHTML:incognitoTabDescription">Pages you view in incognito tabs won’t stick around in your browser’s history, cookie store, or search history after you’ve closed <strong>all</strong> of your incognito tabs. Any files you download or bookmarks you create will be kept.</span>
+      <a href="https://www.mozilla.org/en-US/firefox/browsers/incognito-browser/">Learn more about incognito browsing</a>
+    </p>
+    <p>
+      <strong i18n-content="incognitoTabWarning">Going incognito doesn’t hide your browsing from your employer, your internet service provider, or the websites you visit.</strong>
+    </p>
+  </span>
+</div>  
+
+</body>
+
 </html>
+ 

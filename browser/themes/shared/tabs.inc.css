@@ -9,11 +9,11 @@
 
 :root {
   --tab-min-height: 36px;
-  --inline-tab-padding: 8px;
+  --inline-tab-padding: 10px;
   /* Value for --in-content-page-background in in-content/common.inc.css */
   --tabpanel-background-color: #f9f9fa;
-  --tab-border-radius: 4px;
-  --tab-shadow-max-size: 6px;
+  --tab-border-radius: 100px;
+  --tab-shadow-max-size: 0px;
   --tab-block-margin: 4px;
   /* --tabpanel-background-color matches $in-content-page-background in newtab
      (browser/components/newtab/content-src/styles/_variables.scss) */
@@ -42,7 +42,7 @@
 }
 
 #tabbrowser-tabs {
-  --tab-min-width: 76px;
+  --tab-min-width: 80px;
   --tab-loading-fill: #0A84FF;
 }
 
@@ -85,9 +85,6 @@
 .tabbrowser-tab {
   appearance: none;
   background-color: transparent;
-  border-radius: 0;
-  border-width: 0;
-  margin: 0 !important /* override tabbox.css */;
   padding: 0 !important /* override tabbox.css */;
   -moz-box-align: stretch;
 }
@@ -108,7 +105,7 @@
    the navigation toolbar. */
 .tabbrowser-tab[visuallyselected=true] {
   position: relative;
-  z-index: 2;
+  z-index: 0;
 }
 
 .tab-content {
@@ -450,7 +447,8 @@
   width: 24px;
   height: 24px;
   padding: 7px;
-  border-radius: var(--tab-border-radius);
+  border-color:#4cabff !important;
+  border-radius: 50px var(--tab-border-radius) 0px 0px;
 }
 
 /* The following rulesets allow showing more of the tab title */
@@ -544,7 +542,8 @@
 }
 
 .tab-background {
-  border-radius: var(--tab-border-radius);
+  border-color: #4cabff;
+  border-radius:50px var(--tab-border-radius) 0px 0px;
   margin-block: var(--tab-block-margin);
 }
 
@@ -564,17 +563,17 @@
 /* For themes outside of Light and Dark (which are curated by Mozilla), show a thicker border
    around the tab to help themes that are dependent on tab_line to show the selected tab. */
 :root:not([lwtheme-mozlightdark]) #TabsToolbar:not([brighttext]) #tabbrowser-tabs:not([noshadowfortests]) .tabbrowser-tab:is([visuallyselected=true], [multiselected]) > .tab-stack > .tab-background:-moz-lwtheme {
-  box-shadow: 0 0 0 1px var(--tab-line-color, var(--tabs-border-color, rgba(128,128,142,0.9))),
+  box-shadow: 0 0 0 1px var(--tab-line-color, var(--tabs-border-color, #4cabff)),
               0 0 4px rgba(128,128,142,0.5);
 }
 
 :root:not([lwtheme-mozlightdark]) #TabsToolbar[brighttext] #tabbrowser-tabs:not([noshadowfortests]) .tabbrowser-tab:is([visuallyselected=true], [multiselected]) > .tab-stack > .tab-background:-moz-lwtheme {
-  box-shadow: 0 0 0 1px var(--tab-line-color, var(--tabs-border-color, rgba(128,128,142,0.9)));
+  box-shadow: 0 0 0 1px var(--tab-line-color, var(--tabs-border-color, #4cabff));
 }
 
 .tab-background[multiselected=true],
 .tab-background[selected=true] {
-  border-top-color: var(--tabs-border-color);
+  border-top-color: #4cabff;
   background-color: var(--tab-selected-bgcolor, var(--toolbar-bgcolor));
   background-image: var(--toolbar-bgimage);
   background-repeat: repeat-x;
